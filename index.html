@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="frame-src 'self' https://drive.google.com https://youtube.googleapis.com; script-src 'self' 'unsafe-inline';">
+  <title>IncomingCall</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Landing Page Intro -->
+  <div id="landing-page" class="landing-page">
+    <div class="landing-content">
+      <h1 class="landing-title">Incoming Call</h1>
+      <p class="landing-subtitle">Click to Start</p>
+    </div>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav id="navigation" class="navigation">
+    <div class="nav-numbers">
+      <span class="nav-number active" data-section="1">1</span>
+      <span class="nav-number" data-section="2">2</span>
+      <span class="nav-number" data-section="3">3</span>
+      <span class="nav-number" data-section="4">4</span>
+      <span class="nav-number" data-section="5">5</span>
+    </div>
+  </nav>
+
+  <!-- Sound Control -->
+  <div id="sound-control" class="sound-control">
+    <button id="sound-toggle" class="sound-toggle">
+      <span class="sound-icon">🔊</span>
+    </button>
+  </div>
+
+  <!-- Section 1: The Call -->
+  <section id="the-call" class="section">
+    <div class="centered">
+      <p class="section-text">The past is calling.</p>
+      <img src="assets/rotary-phone.png" alt="Old rotary phone" class="rotary-phone">
+      <audio id="ringtone" src="assets/old-ringtone.mp3" loop autoplay muted></audio>
+    </div>
+    <div class="scroll-down">
+      <span>&#8595;</span>
+    </div>
+  </section>
+  
+  <!-- Section 2: The Temptation -->
+  <section id="the-temptation" class="section">
+    <div class="centered">
+      <iframe 
+        src="https://drive.google.com/file/d/1dR7dbsRyLymk7sMgR7G-v5_Ge7MwfyYA/preview" 
+        width="640" 
+        height="480" 
+        allow="autoplay; fullscreen" 
+        id="temptation-video"
+        sandbox="allow-scripts allow-same-origin allow-presentation"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <div class="scroll-down">
+        <span>&#8595;</span>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Section 3: The Choice -->
+  <section id="the-choice" class="section choice-section">
+    <!-- Centered phone image -->
+    <div class="choice-phone-container">
+      <img src="assets/rotary-phone.png" alt="Old rotary phone" class="choice-phone">
+      <audio id="ringtone" src="assets/old-ringtone.mp3" loop autoplay muted></audio>
+    </div>
+    
+    <!-- Left side - Decline -->
+    <div class="choice-side choice-decline" id="decline-side">
+      <button id="decline-btn" class="choice-button decline-button">Decline</button>
+    </div>
+    
+    <!-- Right side - Accept -->
+    <div class="choice-side choice-accept" id="accept-side">
+      <button id="accept-btn" class="choice-button accept-button">Accept</button>
+    </div>
+    
+    <!-- Audio elements -->
+    <audio id="thunder-static" src="assets/thunder-static.mp3" loop></audio>
+    <audio id="birds-chirp" src="assets/birds-chirp.mp3" loop></audio>
+  </section>
+  
+  <!-- Section 4: Release -->
+  <section id="release" class="section">
+    <div class="centered">
+      <!-- Release container with input and button -->
+      <div class="release-container" id="release-container">
+        <p class="release-prompt">What do you want to let go of?</p>
+        <input type="text" id="release-input" class="release-input" placeholder="Type here...">
+        <button id="let-go-btn" class="let-go-button">Let the past go</button>
+      </div>
+      
+      <!-- Message that appears after fade - positioned absolutely in center -->
+      <div class="release-message" id="release-message"></div>
+      
+      <!-- Audio for whoosh effect -->
+      <audio id="whoosh" src="assets/whoosh.mp3"></audio>
+    </div>
+  </section>
+  
+  <!-- Section 5: About the Artist -->
+  <section id="about-artist" class="section">
+    <div class="centered">
+      <img src="assets/artist-portrait.jpg" alt="Artist portrait" class="artist-portrait">
+      <div class="about-text">
+        <p><strong>About me</strong></p>
+        <p>Hi, I am Jasmin Normatova! Through this piece I wanted to explore the weight of the past and how it lingers over us. <br>
+          For me, that haunting feeling only begins to lift when we make a conscious choice to let it go. <br> I hope this work encourages you to unburden yourself too, to finally set the past free and create space for the present.
+</p>
+      </div>
+      <div class="contact-links">
+        <a href="#" class="chat-bubble">@bloomingjasmin</a>
+        <a href="#" class="chat-bubble">jn2677@nyu.edu</a>
+      </div>
+    </div>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,592 @@
+/* MissedCall - style.css */
+
+:root {
+  --bg-grey: #e0e0e0;
+  --bg-dark: #1a1a1a;
+  --bg-light: #fafafa;
+  --text-main: #222;
+  --accent: #888;
+  --white: #fff;
+  --fade-duration: 0.8s;
+  --transition-duration: 1.2s;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-main);
+  scroll-behavior: smooth;
+  transition: background-color var(--transition-duration) ease-in-out;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Landing Page */
+.landing-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity var(--fade-duration) ease-in-out;
+}
+
+.landing-page.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.landing-content {
+  text-align: center;
+  color: var(--white);
+}
+
+.landing-title {
+  font-size: 4rem;
+  font-weight: 300;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.1em;
+}
+
+.landing-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin: 0;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.landing-subtitle:hover {
+  opacity: 1;
+}
+
+/* Navigation Menu */
+.navigation {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  opacity: 0;
+  transition: opacity var(--fade-duration) ease-in-out;
+}
+
+.navigation.visible {
+  opacity: 1;
+}
+
+.nav-numbers {
+  display: flex;
+  gap: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+}
+
+.nav-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-number:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.nav-number.active {
+  background: var(--white);
+  color: var(--bg-dark);
+  transform: scale(1.1);
+}
+
+/* Sound Control */
+.sound-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity var(--fade-duration) ease-in-out;
+}
+
+.sound-control.visible {
+  opacity: 1;
+}
+
+.sound-toggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.sound-toggle:hover {
+  background: rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+}
+
+.sound-icon {
+  font-size: 1.2rem;
+}
+
+/* Section-specific background colors */
+.section {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background-color var(--transition-duration) ease-in-out, filter 0.8s;
+}
+
+/* Background color transitions for each section */
+#the-call {
+  background-color: #000000; /* black */
+}
+
+#the-temptation {
+  background-color: #000000; /* black */
+}
+
+#the-choice {
+  background: linear-gradient(90deg, #ffffff 0%, #4a4a4a 50%, #000000 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Choice Section - Full Screen Layout */
+.choice-section {
+  height: 100vh;
+  position: relative;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Centered phone container with shake animation for ringing effect */
+.choice-phone-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none; /* Allow clicks to pass through to sides */
+}
+
+/* Shake animation for phone (used when ringing) */
+@keyframes phone-shake {
+  0% { transform: translate(-50%, -50%) rotate(-2deg) scale(1.02); }
+  10% { transform: translate(-50%, -50%) rotate(2deg) scale(1.04); }
+  20% { transform: translate(-50%, -50%) rotate(-3deg) scale(1.03); }
+  30% { transform: translate(-50%, -50%) rotate(3deg) scale(1.05); }
+  40% { transform: translate(-50%, -50%) rotate(-2deg) scale(1.03); }
+  50% { transform: translate(-50%, -50%) rotate(2deg) scale(1.04); }
+  60% { transform: translate(-50%, -50%) rotate(-3deg) scale(1.03); }
+  70% { transform: translate(-50%, -50%) rotate(3deg) scale(1.05); }
+  80% { transform: translate(-50%, -50%) rotate(-2deg) scale(1.03); }
+  90% { transform: translate(-50%, -50%) rotate(2deg) scale(1.04); }
+  100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+}
+
+/* Add this class to .choice-phone-container to trigger shake */
+.choice-phone-container.ringing {
+  animation: phone-shake 0.7s infinite;
+}
+
+/* 
+  To add ringtone sound in the Choice section, 
+  ensure your JS plays the ringtone audio and adds the .ringing class to .choice-phone-container 
+  when the phone should ring, just like in the first section.
+*/
+
+.choice-phone {
+  width: 200px;
+  max-width: 20vw;
+  filter: grayscale(0.3) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+  transition: filter 0.3s ease;
+}
+
+/* Choice sides - positioned absolutely for mouse tracking */
+.choice-side {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+.choice-decline {
+  left: 20%;
+  transform: translateY(-50%);
+}
+
+.choice-accept {
+  right: 20%;
+  transform: translateY(-50%);
+}
+
+/* Choice buttons */
+.choice-button {
+  padding: 1.5rem 3rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border: 3px solid;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 5;
+}
+
+.decline-button {
+  color: #2a2a2a;
+  border-color: #2a2a2a;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.decline-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.accept-button {
+  color: #ffffff;
+  border-color: #ffffff;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.accept-button:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Dynamic gradient background will be controlled by JavaScript */
+.choice-section {
+  transition: background 0.3s ease;
+}
+
+/* Audio element styling - hidden but functional */
+audio {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Section 4: Release - White background with new layout */
+#release {
+  background-color: #ffffff; /* Pure white background */
+  color: var(--text-main);
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.section-text {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--white);
+  text-align: center;
+  opacity: 0.9;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Enhanced rotary phone with shaking animation */
+.rotary-phone {
+  width: 280px; /* Increased from 180px */
+  max-width: 70vw; /* Increased from 60vw */
+  filter: grayscale(1) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  margin-bottom: 2rem;
+  animation: phoneShake 2s ease-in-out infinite;
+}
+
+/* Phone shaking animation */
+@keyframes phoneShake {
+  0%, 100% { 
+    transform: translateX(0) rotate(0deg); 
+  }
+  10% { 
+    transform: translateX(-2px) rotate(-1deg); 
+  }
+  20% { 
+    transform: translateX(2px) rotate(1deg); 
+  }
+  30% { 
+    transform: translateX(-1px) rotate(-0.5deg); 
+  }
+  40% { 
+    transform: translateX(1px) rotate(0.5deg); 
+  }
+  50% { 
+    transform: translateX(-1px) rotate(-0.5deg); 
+  }
+  60% { 
+    transform: translateX(1px) rotate(0.5deg); 
+  }
+  70% { 
+    transform: translateX(-1px) rotate(-0.5deg); 
+  }
+  80% { 
+    transform: translateX(1px) rotate(0.5deg); 
+  }
+  90% { 
+    transform: translateX(-1px) rotate(-0.5deg); 
+  }
+}
+
+/* Enhanced video sizing */
+#the-temptation iframe {
+  width: 90vw; /* Increased from 640px */
+  max-width: 1200px; /* Increased max width */
+  height: 60vh; /* Increased from 480px */
+  min-height: 400px; /* Ensure minimum height */
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2); /* Enhanced shadow */
+  margin-bottom: 2rem;
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  color: var(--accent);
+  opacity: 0.7;
+  animation: bounce 1.5s infinite;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-down:hover {
+  opacity: 1;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(12px); }
+}
+
+/* Release Section Styles */
+.release-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: opacity 5s ease-out;
+}
+
+.release-container.fade-out {
+  opacity: 0;
+}
+
+.release-prompt {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+  opacity: 0.9;
+}
+
+.release-input {
+  padding: 1rem 1.5rem;
+  border-radius: 25px;
+  border: 2px solid var(--accent);
+  font-size: 1.2rem;
+  width: 400px;
+  max-width: 80vw;
+  margin-bottom: 2rem;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.release-input:focus {
+  border-color: var(--text-main);
+}
+
+.let-go-button {
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  background: var(--text-main);
+  color: var(--white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.let-go-button:hover {
+  background: var(--bg-dark);
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Centered release message */
+.release-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem; /* Increased size */
+  color: var(--text-main);
+  opacity: 0;
+  transition: opacity var(--fade-duration);
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  z-index: 10;
+}
+
+.release-message.show {
+  opacity: 1;
+}
+
+#about-artist {
+  background-color: #ffffff; /* Pure white */
+}
+
+/* About the Artist */
+.artist-portrait {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  filter: grayscale(1);
+  box-shadow: 0 2px 12px #bbb;
+}
+.about-text {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.contact-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+.chat-bubble {
+  background: var(--bg-grey);
+  border-radius: 18px;
+  padding: 0.7rem 1.2rem;
+  color: var(--text-main);
+  text-decoration: none;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+.chat-bubble:hover {
+  background: var(--bg-light);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .landing-title {
+    font-size: 2.5rem;
+  }
+  .landing-subtitle {
+    font-size: 1rem;
+  }
+  .nav-numbers {
+    gap: 10px;
+    padding: 8px 15px;
+  }
+  .nav-number {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+  .section-text {
+    font-size: 1.2rem;
+  }
+  .rotary-phone {
+    width: 200px; /* Smaller on mobile */
+    max-width: 80vw;
+  }
+  #the-temptation iframe {
+    width: 95vw;
+    height: 50vh;
+    min-height: 300px;
+  }
+  .sound-toggle {
+    width: 45px;
+    height: 45px;
+  }
+  
+  /* Mobile adjustments for choice section */
+  .choice-button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+  }
+  
+  .choice-phone {
+    width: 150px;
+    max-width: 25vw;
+  }
+  
+  /* Mobile adjustments for release section */
+  .release-prompt {
+    font-size: 1.5rem;
+  }
+  
+  .release-input {
+    width: 90vw;
+    font-size: 1rem;
+  }
+  
+  .let-go-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .release-message {
+    font-size: 2rem; /* Smaller on mobile */
+  }
+  
+  .artist-portrait {
+    width: 80px;
+    height: 80px;
+  }
+}
